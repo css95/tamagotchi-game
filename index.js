@@ -9,29 +9,37 @@ class Pet {
 
     //Create method for each activity
     nap() {
-        //Increase energy by 40
-        //Decrease happiness by 10
-        //Decrease fullness by 10
-        //Message
+        this.energy += 40;
+        this.happiness -= 10;
+        this.fullness -= 10;
+        console.log(this.name + " took a nap");
     }
 
     play() {
-        //Increase happiness by 30
-        //Decrease fullness by 10
-        //Decrease energy by 10
-        //Message
+        this.happiness += 30;
+        this.fullness -= 10;
+        this.energy -= 10;
+        console.log("You played with " + this.name);
     }
 
     eat() {
-        //Increase fullness by 30
-        //Decrease happiness by 5
-        //Decrease energy by 15
-        //Message
+        this.fullness += 30;
+        this.happiness -= 5;
+        this.energy -= 15;
+        console.log("You fed " + this.name);
     }
 
     //History:
     //Text box
 
-
 }
 
+const testPet = new Pet("Mimi", "dog");
+
+testPet.nap();
+testPet.play();
+testPet.eat();
+
+console.log(testPet);
+
+//API - name 
