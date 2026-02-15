@@ -9,6 +9,32 @@
 </head>
 <body>
     <h1>Tamagotchi Game</h1>
-    <div id="game"></div>
+    <div id="game">
+        <h2>Create your pet!</h2>
+        <div id="create-pet-form">
+            <label for="pet-select">Choose a pet:</label>
+            <select name="pets" id="pet-select">
+                <option value="">--Please choose an option--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="guineapig">Guinea pig</option>
+                <option value="parrot">Parrot</option>
+            </select><br>
+
+            <label for="petName">Name your pet:</label>
+            <input type="text" id="petName" placeholder="Name">
+            <button id="random-name-btn">Random name</button><br>
+
+            <button id="create-pet-btn">Create pet</button>
+        </div>
+
+        <div id="pets-container"></div>
+
+        <div id="activity">
+            <h2>Activity</h2>
+            <div id="history"></div>
+        </div>
+
+    </div>
 </body>
 </html>
