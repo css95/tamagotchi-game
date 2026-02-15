@@ -24,7 +24,7 @@ class Pet {
 
     eat() {
         this.fullness += 30;
-        this.happiness -= 5;
+        this.happiness += 5;
         this.energy -= 15;
         console.log("You fed " + this.name);
     }
