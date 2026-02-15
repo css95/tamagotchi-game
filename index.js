@@ -52,6 +52,7 @@ class Pet {
         if (this.fullness < 0) {
             this.fullness = 0;
         }
+    }
 
     static async getPetName() {
         try {
