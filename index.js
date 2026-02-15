@@ -32,6 +32,15 @@ class Pet {
     //History:
     //Text box
 
+    static async getPetName() {
+        try {
+            const response = await fetch('https://randomuser.me/api/0.8');
+            const data = await response.json();
+            return data.results[0].user.name.first;
+        } catch (err) {
+            console.log(err)
+        }
+    }
 }
 
 const testPet = new Pet("Mimi", "dog");
@@ -41,5 +50,3 @@ testPet.play();
 testPet.eat();
 
 console.log(testPet);
-
-//API - name 
