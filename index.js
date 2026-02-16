@@ -67,16 +67,17 @@ class Pet {
 
 const randomNameBtn = document.getElementById('random-name-btn');
 const petNameInput = document.getElementById('pet-name');
+const createPetBtn = document.getElementById('create-pet-btn');
+const petSelect = document.getElementById('pet-select');
 
 randomNameBtn.addEventListener('click', async () => {
     const randomName = await Pet.getPetName();
     petNameInput.value = randomName;
 });
 
-const testPet = new Pet("Mimi", "dog");
-
-testPet.nap();
-testPet.play();
-testPet.eat();
-
-console.log(testPet);
+createPetBtn.addEventListener('click', () => {
+    const name = petNameInput.value;
+    const animalType = petSelect.value;
+    const newPet = new Pet(name, animalType);
+    console.log(newPet);
+});
