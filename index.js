@@ -1,11 +1,3 @@
-const randomNameBtn = document.getElementById('random-name-btn');
-const petName = document.getElementById('pet-name');
-
-randomNameBtn.addEventListener('click', async () => {
-    const randomName = await Pet.getPetName();
-    petName.value = randomName;
-});
-
 class Pet {
     constructor(name, animalType) {
         this.name = name;
@@ -20,7 +12,7 @@ class Pet {
         this.happiness -= 10;
         this.fullness -= 10;
         this.keepStatsInRange();
-        console.log(this.name + " took a nap");
+        return this.name + " took a nap";
     }
 
     play() {
@@ -28,7 +20,7 @@ class Pet {
         this.fullness -= 10;
         this.energy -= 10;
         this.keepStatsInRange();
-        console.log("You played with " + this.name);
+        return "You played with " + this.name;
     }
 
     eat() {
@@ -36,7 +28,7 @@ class Pet {
         this.happiness += 5;
         this.energy -= 15;
         this.keepStatsInRange();
-        console.log("You fed " + this.name);
+        return "You fed " + this.name;
     }
 
     keepStatsInRange() {
@@ -72,6 +64,14 @@ class Pet {
         }
     }
 }
+
+const randomNameBtn = document.getElementById('random-name-btn');
+const petNameInput = document.getElementById('pet-name');
+
+randomNameBtn.addEventListener('click', async () => {
+    const randomName = await Pet.getPetName();
+    petNameInput.value = randomName;
+});
 
 const testPet = new Pet("Mimi", "dog");
 
