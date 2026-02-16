@@ -1,3 +1,11 @@
+const randomNameBtn = document.getElementById('random-name-btn');
+const petName = document.getElementById('pet-name');
+
+randomNameBtn.addEventListener('click', async () => {
+    const randomName = await Pet.getPetName();
+    petName.value = randomName;
+});
+
 class Pet {
     constructor(name, animalType) {
         this.name = name;
