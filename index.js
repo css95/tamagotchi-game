@@ -80,6 +80,12 @@ randomNameBtn.addEventListener('click', async () => {
 createPetBtn.addEventListener('click', () => {
     const name = petNameInput.value.charAt(0).toUpperCase()+petNameInput.value.slice(1);
     const animalType = petSelect.value;
+
+    if (name === "" || animalType === "") {
+        alert('Please enter a name and choose an animal type!');
+        return;
+    }
+
     const newPet = new Pet(name, animalType);
     console.log(newPet); //delete
     displayPet(newPet);
