@@ -61,6 +61,7 @@ class Pet {
             return data.results[0].user.name.first;
         } catch (err) {
             console.log(err)
+            //Display something on the screen?
         }
     }
 }
@@ -77,10 +78,10 @@ randomNameBtn.addEventListener('click', async () => {
 });
 
 createPetBtn.addEventListener('click', () => {
-    const name = petNameInput.value;
+    const name = petNameInput.value.charAt(0).toUpperCase()+petNameInput.value.slice(1);
     const animalType = petSelect.value;
     const newPet = new Pet(name, animalType);
-    console.log(newPet);
+    console.log(newPet); //delete
     displayPet(newPet);
 });
 
@@ -88,12 +89,12 @@ function displayPet(pet) {
     const petDiv = document.createElement('div');
     petDiv.innerHTML = `
         <h3>${pet.name}</h3>
-        <label for="energyProgress">Energy</label>
-        <progress id="energyProgress" value="${pet.energy}" max="100"></progress><br>
-        <label for="happinessProgress">Happiness</label>
-        <progress id="happinessProgress" value="${pet.happiness}" max="100"></progress><br>
-        <label for="fullnessProgress">Fullness</label>
-        <progress id="fullnessProgress" value="${pet.fullness}" max="100"></progress><br>
+        <label for="energyProgress${pet.name}">Energy</label>
+        <progress id="energyProgress${pet.name}" value="${pet.energy}" max="100"></progress><br>
+        <label for="happinessProgress${pet.name}">Happiness</label>
+        <progress id="happinessProgress${pet.name}" value="${pet.happiness}" max="100"></progress><br>
+        <label for="fullnessProgress${pet.name}">Fullness</label>
+        <progress id="fullnessProgress${pet.name}" value="${pet.fullness}" max="100"></progress><br>
         
     `;
     petsContainer.appendChild(petDiv);
