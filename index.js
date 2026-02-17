@@ -101,7 +101,26 @@ function displayPet(pet) {
         <progress id="happinessProgress${pet.name}" value="${pet.happiness}" max="100"></progress><br>
         <label for="fullnessProgress${pet.name}">Fullness</label>
         <progress id="fullnessProgress${pet.name}" value="${pet.fullness}" max="100"></progress><br>
-        
+
+        <button id="nap-btn${pet.name}">Nap</button>
+        <button id="play-btn${pet.name}">Play</button>
+        <button id="eat-btn${pet.name}">Eat</button>
     `;
     petsContainer.appendChild(petDiv);
+
+    const napBtn = document.getElementById(`nap-btn${pet.name}`); 
+    const playBtn = document.getElementById(`play-btn${pet.name}`);
+    const eatBtn = document.getElementById(`eat-btn${pet.name}`);
+
+    napBtn.addEventListener('click', () => {
+        pet.nap();
+    });
+
+    playBtn.addEventListener('click', () => {
+        pet.play();
+    });
+
+     eatBtn.addEventListener('click', () => {
+        pet.eat();
+    });
 }
