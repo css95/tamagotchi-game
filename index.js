@@ -95,32 +95,54 @@ function displayPet(pet) {
     const petDiv = document.createElement('div');
     petDiv.innerHTML = `
         <h3>${pet.name}</h3>
+
         <label for="energyProgress${pet.name}">Energy</label>
         <progress id="energyProgress${pet.name}" value="${pet.energy}" max="100"></progress><br>
+
         <label for="happinessProgress${pet.name}">Happiness</label>
         <progress id="happinessProgress${pet.name}" value="${pet.happiness}" max="100"></progress><br>
+
         <label for="fullnessProgress${pet.name}">Fullness</label>
         <progress id="fullnessProgress${pet.name}" value="${pet.fullness}" max="100"></progress><br>
 
-        <button id="nap-btn${pet.name}">Nap</button>
-        <button id="play-btn${pet.name}">Play</button>
-        <button id="eat-btn${pet.name}">Eat</button>
+        <button class="nap-btn">Nap</button>
+        <button class="play-btn">Play</button>
+        <button class="eat-btn">Eat</button>
     `;
     petsContainer.appendChild(petDiv);
 
-    const napBtn = document.getElementById(`nap-btn${pet.name}`); 
-    const playBtn = document.getElementById(`play-btn${pet.name}`);
-    const eatBtn = document.getElementById(`eat-btn${pet.name}`);
+    const napBtn = petDiv.querySelector('.nap-btn');
+    const playBtn = petDiv.querySelector('.play-btn');
+    const eatBtn = petDiv.querySelector('.eat-btn');
 
     napBtn.addEventListener('click', () => {
         pet.nap();
+        const energyBar = document.getElementById(`energyProgress${pet.name}`); 
+        energyBar.value = pet.energy;
+        const happinessBar = document.getElementById(`happinessProgress${pet.name}`);
+        happinessBar.value = pet.happiness;
+        const fullnessBar = document.getElementById(`fullnessProgress${pet.name}`); 
+        fullnessBar.value = pet.fullness;
     });
 
     playBtn.addEventListener('click', () => {
         pet.play();
+        const energyBar = document.getElementById(`energyProgress${pet.name}`); 
+        energyBar.value = pet.energy;
+        const happinessBar = document.getElementById(`happinessProgress${pet.name}`);
+        happinessBar.value = pet.happiness;
+        const fullnessBar = document.getElementById(`fullnessProgress${pet.name}`); 
+        fullnessBar.value = pet.fullness;
+        
     });
 
      eatBtn.addEventListener('click', () => {
         pet.eat();
+        const energyBar = document.getElementById(`energyProgress${pet.name}`); 
+        energyBar.value = pet.energy;
+        const happinessBar = document.getElementById(`happinessProgress${pet.name}`);
+        happinessBar.value = pet.happiness;
+        const fullnessBar = document.getElementById(`fullnessProgress${pet.name}`); 
+        fullnessBar.value = pet.fullness;
     });
 }
