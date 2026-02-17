@@ -69,6 +69,7 @@ const randomNameBtn = document.getElementById('random-name-btn');
 const petNameInput = document.getElementById('pet-name');
 const createPetBtn = document.getElementById('create-pet-btn');
 const petSelect = document.getElementById('pet-select');
+const petsContainer = document.getElementById('pets-container');
 
 randomNameBtn.addEventListener('click', async () => {
     const randomName = await Pet.getPetName();
@@ -80,4 +81,11 @@ createPetBtn.addEventListener('click', () => {
     const animalType = petSelect.value;
     const newPet = new Pet(name, animalType);
     console.log(newPet);
+    displayPet(newPet);
 });
+
+function displayPet(pet) {
+    const petDiv = document.createElement('div');
+    petDiv.innerHTML = `<h3>${pet.name}</h3>`;
+    petsContainer.appendChild(petDiv);
+}
