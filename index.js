@@ -86,6 +86,15 @@ createPetBtn.addEventListener('click', () => {
 
 function displayPet(pet) {
     const petDiv = document.createElement('div');
-    petDiv.innerHTML = `<h3>${pet.name}</h3>`;
+    petDiv.innerHTML = `
+        <h3>${pet.name}</h3>
+        <label for="energyProgress">Energy</label>
+        <progress id="energyProgress" value="${pet.energy}" max="100"></progress><br>
+        <label for="happinessProgress">Happiness</label>
+        <progress id="happinessProgress" value="${pet.happiness}" max="100"></progress><br>
+        <label for="fullnessProgress">Fullness</label>
+        <progress id="fullnessProgress" value="${pet.fullness}" max="100"></progress><br>
+        
+    `;
     petsContainer.appendChild(petDiv);
 }
