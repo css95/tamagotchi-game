@@ -7,7 +7,23 @@ class Pet {
         this.energy = 50;
         this.fullness = 50;
         this.happiness = 50;
+        this.timer();
     }
+
+    timer() {
+        this.petTimer = setInterval(() => {
+            this.energy -= 10;
+            this.fullness -= 10;
+            this.happiness -= 10;
+            this.keepStatsInRange();
+            updateBars(this);
+            if (this.energy === 0 || this.happiness === 0 || this.fullness === 0 ) {
+                clearInterval(this.petTimer);
+                this.petDiv.remove();
+            }
+        }, 10000);
+    }
+
 
     nap() {
         this.energy += 40;
@@ -119,6 +135,7 @@ function displayPet(pet) {
         <button class="play-btn">Play</button>
         <button class="eat-btn">Eat</button>
     `;
+    pet.petDiv = petDiv;
     petsContainer.appendChild(petDiv);
 
     const napBtn = petDiv.querySelector('.nap-btn');
