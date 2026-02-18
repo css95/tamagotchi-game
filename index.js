@@ -17,6 +17,7 @@ class Pet {
             this.happiness -= 10;
             this.keepStatsInRange();
             updateBars(this);
+
             if (this.energy === 0 || this.happiness === 0 || this.fullness === 0 ) {
                 clearInterval(this.petTimer);
                 this.petDiv.remove();
@@ -25,7 +26,7 @@ class Pet {
                 if (index > -1) {
                     pets.splice(index, 1);
                 }
-
+                
                 activityHistory.innerHTML +=  `<p>${this.name} ran away due to neglect! :(</p>`;
             }
         }, 10000);
