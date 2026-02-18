@@ -60,8 +60,8 @@ class Pet {
             const data = await response.json();
             return data.results[0].user.name.first;
         } catch (err) {
-            console.log(err)
-            //Display something on the screen?
+            console.error('Could not fetch name:', err);
+            return 'Toto';
         }
     }
 }
@@ -71,6 +71,7 @@ const petNameInput = document.getElementById('pet-name');
 const createPetBtn = document.getElementById('create-pet-btn');
 const petSelect = document.getElementById('pet-select');
 const petsContainer = document.getElementById('pets-container');
+const activityHistory = document.getElementById('activity-history');
 
 randomNameBtn.addEventListener('click', async () => {
     const randomName = await Pet.getPetName();
@@ -87,7 +88,6 @@ createPetBtn.addEventListener('click', () => {
     }
 
     const newPet = new Pet(name, animalType);
-    console.log(newPet); //delete
     displayPet(newPet);
 });
 
@@ -95,6 +95,7 @@ function displayPet(pet) {
     const petDiv = document.createElement('div');
     petDiv.innerHTML = `
         <h3>${pet.name}</h3>
+        <img src="images/${pet.animalType}.png" alt="Your pet is a ${pet.animalType}">
 
         <label for="energyProgress${pet.name}">Energy</label>
         <progress id="energyProgress${pet.name}" value="${pet.energy}" max="100"></progress><br>
@@ -116,33 +117,30 @@ function displayPet(pet) {
     const eatBtn = petDiv.querySelector('.eat-btn');
 
     napBtn.addEventListener('click', () => {
-        pet.nap();
-        const energyBar = document.getElementById(`energyProgress${pet.name}`); 
-        energyBar.value = pet.energy;
-        const happinessBar = document.getElementById(`happinessProgress${pet.name}`);
-        happinessBar.value = pet.happiness;
-        const fullnessBar = document.getElementById(`fullnessProgress${pet.name}`); 
-        fullnessBar.value = pet.fullness;
+        const activityMessage = pet.nap();
+        updateBars(pet);
+        activityHistory.innerHTML += `<p>${activityMessage}</p>`;
     });
 
     playBtn.addEventListener('click', () => {
-        pet.play();
-        const energyBar = document.getElementById(`energyProgress${pet.name}`); 
-        energyBar.value = pet.energy;
-        const happinessBar = document.getElementById(`happinessProgress${pet.name}`);
-        happinessBar.value = pet.happiness;
-        const fullnessBar = document.getElementById(`fullnessProgress${pet.name}`); 
-        fullnessBar.value = pet.fullness;
-        
+        const activityMessage = pet.play();
+        updateBars(pet);
+        activityHistory.innerHTML += `<p>${activityMessage}</p>`;
     });
 
-     eatBtn.addEventListener('click', () => {
-        pet.eat();
-        const energyBar = document.getElementById(`energyProgress${pet.name}`); 
-        energyBar.value = pet.energy;
-        const happinessBar = document.getElementById(`happinessProgress${pet.name}`);
-        happinessBar.value = pet.happiness;
-        const fullnessBar = document.getElementById(`fullnessProgress${pet.name}`); 
-        fullnessBar.value = pet.fullness;
+    eatBtn.addEventListener('click', () => {
+        const activityMessage = pet.eat();
+        updateBars(pet);
+        activityHistory.innerHTML += `<p>${activityMessage}</p>`;
     });
+
+}
+
+function updateBars(pet) {
+    const energyBar = document.getElementById(`energyProgress${pet.name}`); 
+    energyBar.value = pet.energy;
+    const happinessBar = document.getElementById(`happinessProgress${pet.name}`);
+    happinessBar.value = pet.happiness;
+    const fullnessBar = document.getElementById(`fullnessProgress${pet.name}`); 
+    fullnessBar.value = pet.fullness;
 }
