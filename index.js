@@ -1,5 +1,7 @@
+//Array to store the pet objects
 let pets = [];
 
+//Pet class 
 class Pet {
     constructor(name, animalType) {
         this.name = name;
@@ -17,8 +19,14 @@ class Pet {
             this.happiness -= 10;
             this.keepStatsInRange();
             updateBars(this);
+            this.checkPetAlive();
+        }, 10000);
+    }
 
-            if (this.energy === 0 || this.happiness === 0 || this.fullness === 0 ) {
+    checkPetAlive() {
+        if (this.energy === 0 || this.happiness === 0 || this.fullness === 0 ) {
+            // clearInterval(this.petTimer);
+            setTimeout( () => {
                 clearInterval(this.petTimer);
                 this.petDiv.remove();
 
@@ -26,18 +34,19 @@ class Pet {
                 if (index > -1) {
                     pets.splice(index, 1);
                 }
-                
+
                 activityHistory.innerHTML +=  `<p>${this.name} ran away due to neglect! :(</p>`;
-            }
-        }, 10000);
+            }, 3000);
+        }
     }
 
-
+    //Activities - nap, play, eat
     nap() {
         this.energy += 40;
         this.happiness -= 10;
         this.fullness -= 10;
         this.keepStatsInRange();
+        this.checkPetAlive();
         return this.name + " took a nap";
     }
 
@@ -46,6 +55,7 @@ class Pet {
         this.fullness -= 10;
         this.energy -= 10;
         this.keepStatsInRange();
+        this.checkPetAlive();
         return "You played with " + this.name;
     }
 
@@ -54,9 +64,11 @@ class Pet {
         this.happiness += 5;
         this.energy -= 15;
         this.keepStatsInRange();
+        this.checkPetAlive();
         return "You fed " + this.name;
     }
 
+    //Makes sure that the stats stay within range 0-100
     keepStatsInRange() {
         if (this.energy > 100) {
             this.energy = 100;
@@ -80,6 +92,7 @@ class Pet {
         }
     }
 
+    //Static method to fetch a random pet name from API 
     static async getPetName() {
         try {
             const response = await fetch('https://randomuser.me/api/0.8');
@@ -92,6 +105,7 @@ class Pet {
     }
 }
 
+//DOM ELEMENTS
 const randomNameBtn = document.getElementById('random-name-btn');
 const petNameInput = document.getElementById('pet-name');
 const createPetBtn = document.getElementById('create-pet-btn');
@@ -99,11 +113,13 @@ const petSelect = document.getElementById('pet-select');
 const petsContainer = document.getElementById('pets-container');
 const activityHistory = document.getElementById('activity-history');
 
+//Random name button: When clicked, it gets a random name from the API and fills it into the input field
 randomNameBtn.addEventListener('click', async () => {
     const randomName = await Pet.getPetName();
     petNameInput.value = randomName;
 });
 
+//Create pet button: When clicked, a pet is created with name and animalType and image
 createPetBtn.addEventListener('click', () => {
 
     if (pets.length >= 4) {
@@ -124,8 +140,11 @@ createPetBtn.addEventListener('click', () => {
     displayPet(newPet);
 });
 
+//Function to display the created pet on the page
 function displayPet(pet) {
     const petDiv = document.createElement('div');
+    petDiv.classList.add("pet-card");
+
     petDiv.innerHTML = `
         <h3>${pet.name}</h3>
         <img src="images/${pet.animalType}.png" alt="Your pet is a ${pet.animalType}">
@@ -170,6 +189,7 @@ function displayPet(pet) {
 
 }
 
+//Function to update the progress bars for energy, happiness, and fullness
 function updateBars(pet) {
     const energyBar = document.getElementById(`energyProgress${pet.name}`); 
     energyBar.value = pet.energy;
