@@ -20,6 +20,13 @@ class Pet {
             if (this.energy === 0 || this.happiness === 0 || this.fullness === 0 ) {
                 clearInterval(this.petTimer);
                 this.petDiv.remove();
+
+                const index = pets.indexOf(this);
+                if (index > -1) {
+                    pets.splice(index, 1);
+                }
+
+                activityHistory.innerHTML +=  `<p>${this.name} ran away due to neglect! :(</p>`;
             }
         }, 10000);
     }
