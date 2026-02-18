@@ -1,3 +1,5 @@
+let pets = [];
+
 class Pet {
     constructor(name, animalType) {
         this.name = name;
@@ -79,6 +81,12 @@ randomNameBtn.addEventListener('click', async () => {
 });
 
 createPetBtn.addEventListener('click', () => {
+
+    if (pets.length >= 4) {
+        alert('You can only create up to 4 pets!');
+        return;
+    }
+
     const name = petNameInput.value.charAt(0).toUpperCase()+petNameInput.value.slice(1);
     const animalType = petSelect.value;
 
@@ -88,6 +96,7 @@ createPetBtn.addEventListener('click', () => {
     }
 
     const newPet = new Pet(name, animalType);
+    pets.push(newPet);
     displayPet(newPet);
 });
 
