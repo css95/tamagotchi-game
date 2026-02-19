@@ -5,7 +5,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #c7f0ff 0%, #fff6cc 100%);
     color: #2d3436;
     font-family: 'Courier New', Courier, monospace;
     min-height: 100vh;
@@ -13,20 +13,229 @@ body {
 }
 
 #game {
-    max-width: 1500px;
+    max-width: 1250px;
     margin: 0 auto;
     background-color: #fff;
-    border: 10px solid #2d3436;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgb(0, 0, 0, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 10px 0;
 }
 
 h1 {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 15px;
-    color: #ee5a6f;
-    text-shadow: 4px 5px 0px #feca57;
-    font-size: 3em;
+    color: #fd79A6;
+    text-shadow: 4px 5px 0px #fff6cc;
+    font-size: 4em;
 }
 
+h2 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #fd79A6;
+    font-size: 2em;
+}
+
+#create-pet-form {
+    text-align: center;
+    margin: 20px;
+    padding: 25px;
+    background-color: #ffeaa7;
+    border: 4px solid #fdcb6e;
+    border-radius: 15px;
+}
+
+#create-pet-form label {
+    font-weight: 700;
+    margin-right: 8px;
+    font-size: 1.5em;
+}
+
+#create-pet-form select,
+#create-pet-form input {
+    width: min(420px, 100%);
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 2px solid #2a2a2a;
+    outline: none;
+    background: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+}
+
+#create-pet-form select:focus,
+#create-pet-form input:focus {
+  box-shadow: 0 0 0 4px rgba(0,0,0,.12);
+}
+
+#create-pet-form button {
+  width: fit-content;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px 5px;
+    border: 3px solid #2d3436;
+    background-color: #55efc4;
+    color: #2d3436;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 4px 4px 0px #2d3436;
+}
+
+button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #2d3436;
+}
+
+button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px #2d3436;
+}
+
+#create-pet-btn {
+    background-color: #fd79a8;
+    font-size: 1.2em;
+    padding: 15px 30px;
+}
+
+#pets-container {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.pet-card {
+    border: 5px solid #2d3436;
+    padding: 20px;
+    background: linear-gradient(135deg, #fff6cc 0%, #c7f0ff 100%);
+    text-align: center;
+    width: 280px;
+    border-radius: 15px;
+    box-shadow: 8px 8px 0px #2d3436;
+    transition: transform 0.2s;
+}
+
+.pet-card:hover {
+    transform: translateY(-5px);
+}
+
+.pet-card h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #2d3436;
+    text-shadow: 2px 2px 0px #ffeaa7;
+}
+
+.pet-card img {
+    width: 140px;
+    height: 140px;
+    margin: 15px auto;
+    display: block;
+    border: 4px solid #2d3436;
+    border-radius: 50%;
+    background-color: #fff;
+    padding: 5px;
+}
+
+.pet-card label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: #2d3436;
+}
+
+.pet-card progress {
+    width: 100%;
+    height: 25px;
+    border: 3px solid #2d3436;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.pet-card progress::-webkit-progress-bar {
+    background-color: #dfe6e9;
+    border-radius: 3px;
+}
+
+.pet-card progress::-webkit-progress-value {
+    background: linear-gradient(90deg, #00b894, #55efc4);
+    border-radius: 3px;
+}
+
+.pet-card progress::-moz-progress-bar {
+    background: linear-gradient(90deg, #00b894, #55efc4);
+    border-radius: 3px;
+}
+
+.pet-card button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #74b9ff;
+}
+
+#activity {
+    margin: 20px;
+    padding: 25px;
+    background-color: #c7f0ff;
+    border: 4px solid #2d3436;
+    border-radius: 15px;
+}
+
+#activity-history {
+    min-height: 100px;
+    margin-top: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: #fff;
+    border: 3px solid #2d3436;
+    border-radius: 10px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #74b9ff #dfe6e9;
+}
+
+#activity-history p {
+    padding: 8px;
+    margin: 5px 0;
+    background-color: #ffeaa7;
+    border-left: 4px solid #fdcb6e;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+#activity-history::-webkit-scrollbar {
+    width: 10px;
+}
+
+#activity-history::-webkit-scrollbar-track {
+    background: #dfe6e9;
+    border-radius: 10px;
+}
+
+#activity-history::-webkit-scrollbar-thumb {
+    background: #74b9ff;
+    border-radius: 10px;
+    border: 2px solid #2d3436;
+}
+
+@media (max-width: 600px) {
+    #create-pet-form {
+        padding: 15px;
+    }
+    
+    .pet-card {
+        width: 100%;
+        max-width: 280px;
+    }
+}
