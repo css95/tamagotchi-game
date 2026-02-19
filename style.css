@@ -1,1 +1,32 @@
-/* CSS Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #2d3436;
+    font-family: 'Courier New', Courier, monospace;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#game {
+    max-width: 1500px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 10px solid #2d3436;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgb(0, 0, 0, 1);
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #ee5a6f;
+    text-shadow: 4px 5px 0px #feca57;
+    font-size: 3em;
+}
+
