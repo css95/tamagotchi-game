@@ -25,7 +25,6 @@ class Pet {
 
     checkPetAlive() {
         if (this.energy === 0 || this.happiness === 0 || this.fullness === 0 ) {
-            // clearInterval(this.petTimer);
             setTimeout( () => {
                 clearInterval(this.petTimer);
                 this.petDiv.remove();
@@ -132,6 +131,12 @@ createPetBtn.addEventListener('click', () => {
 
     if (name === "" || animalType === "") {
         alert('Please enter a name and choose an animal type!');
+        return;
+    }
+
+    const nameExists = pets.some(pet => pet.name === name);
+    if (nameExists) {
+        alert('A pet with this name already exists! Please choose a different name.');
         return;
     }
 
