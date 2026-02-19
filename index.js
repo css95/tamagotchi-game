@@ -46,7 +46,7 @@ class Pet {
         this.fullness -= 10;
         this.keepStatsInRange();
         this.checkPetAlive();
-        return this.name + " took a nap";
+        return this.name + " took a nap" + ".";
     }
 
     play() {
@@ -55,7 +55,7 @@ class Pet {
         this.energy -= 10;
         this.keepStatsInRange();
         this.checkPetAlive();
-        return "You played with " + this.name;
+        return "You played with " + this.name + ".";
     }
 
     eat() {
@@ -64,7 +64,7 @@ class Pet {
         this.energy -= 15;
         this.keepStatsInRange();
         this.checkPetAlive();
-        return "You fed " + this.name;
+        return "You fed " + this.name + ".";
     }
 
     //Makes sure that the stats stay within range 0-100
