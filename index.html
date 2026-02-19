@@ -10,27 +10,23 @@
 <body>
     <div id="game">
         <h1>My Pet Game</h1>
-        <h2>Create your pet!</h2>
+        
         <div id="create-pet-form">
-            <div class="choose-pet">
-                <label for="pet-select">Choose a pet:</label>
-                <select id="pet-select">
-                    <option value="">--Please choose an option--</option>
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="guineapig">Guinea pig</option>
-                    <option value="parrot">Parrot</option>
-                </select><br>
-            </div>
-            <div class="name-pet">
-                <label for="pet-name">Name your pet:</label>
-                <input type="text" id="pet-name" placeholder="Name">
-                <button id="random-name-btn">Random name</button><br>
-            </div>
+            <label for="pet-select">Choose a pet:</label>
+            <select id="pet-select">
+                <option value="">--Please choose an option--</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="guineapig">Guinea pig</option>
+                <option value="parrot">Parrot</option>
+            </select><br>
 
-            <div class="create-pet">
-                <button id="create-pet-btn">Create pet</button>
-            </div>
+            <label for="pet-name">Name your pet:</label>
+            <input type="text" id="pet-name" placeholder="Name">
+            <button id="random-name-btn">Random name</button><br>
+
+            <button id="create-pet-btn">Create pet</button>
+            
         </div>
 
         <div id="pets-container"></div>
