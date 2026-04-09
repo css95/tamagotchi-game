@@ -19,5 +19,5 @@ A browser-based Tamagotchi-style game built as the final project in my JavaScrip
 ```bash
 git clone https://github.com/css95/tamagotchi-game.git
 cd tamagotchi-game
-//open index.html
 ```
+Open index.html directly in your browser.
